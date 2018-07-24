@@ -1,0 +1,20 @@
+.poolwidget { display: flex; flex-direction: column; width: 400px; margin: 0 auto; }
+.poolShadow { width: 400px; height: 295px; box-shadow: 0px 2px 11px 1px rgba(0,0,0,0.15); border-radius: 4px; }
+.poolTemperature { display: flex; flex-direction: column; }
+.poolTemperatureHeader { display: flex; justify-content: center; flex-direction: column; width: 400px; height: 20px; background-color: #3286CC; border-radius: 4px 4px 0px 0px; border-bottom: 1px solid #7FB7E2; }
+.poolTemperatureHeader span { text-align: right; font-size: 11px; color: #ffffff; padding-right: 10px; text-decoration: none; }
+.poolTemperatureGraph { width: 100%; display: flex; z-index: 0; position: relative; }
+.poolTemperatureCanvas { flex: 1; z-index: 1; }
+.poolTemperatureCanvas canvas { background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MCIgaGVpZ2h0PSI2MCI+CjxyZWN0IHdpZHRoPSI5MCIgaGVpZ2h0PSI2MCIgZmlsbD0iIzMyODZDQyI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iOTAiIGhlaWdodD0iMzAiIGZpbGw9IiMzNDhGRDYiPjwvcmVjdD4KPC9zdmc+"); }
+.poolTemperatureDisplay { z-index: 10; position: absolute; right: 10px; bottom: 20px; font-size: 25px; font-weight: bold; text-align: center; color:#000000; }
+.poolTemperatureSubDisplay { font-size: 10px; font-weight: normal; display: block; }
+.poolOthersData { width: 400px; height: 125px; display: flex; justify-content: center; align-items: center; background-color: #FFFFFF; border-radius: 0px 0px 4px 4px; }
+.poolDataBox { width: 125px; padding: 10px 0px; font-size: 18px; text-align: center; }
+.poolDataBox:nth-child(n+2) { border-left: 1px solid #E8E8E8 }
+.poolDataTitle { font-size: 14px; color:#000000; }
+.poolDataValue { padding-top: 5px; }
+.poolDataDurationState { font-size: 8px; font-weight: bold; padding-bottom: 10px; }
+.poolDataStateOK { color:#3286CC; }
+.poolDataStateWarning { color:#F39F4F; }
+.poolDataStateDanger { color:#DE4367; }
+.poolCaptionBar { fill : #474746 !important; font-size : 8px !important; }
