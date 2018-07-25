@@ -165,6 +165,7 @@ Une ne reste plus qu'a créer votre widget "BlueConnectPool" :
 	* [Chart.min.js](Chart.min.js) : Bibliothèque permettant l'affichage de la courbe de température
 	* [Pool.css](Pool.css) : Le fichier CSS de notre Widget
 * Copier le code PHP [du widget](Widget.php). 
+
 Attention de mettre à jour les liens "plugins/widget/core/template/dashboard/cmd.info.string.BlueConnectPool" si vous ne nommé pas le widget de la même manière.
 
 ![Widget](images/WidgetCode.png)
