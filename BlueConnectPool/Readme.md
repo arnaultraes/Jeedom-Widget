@@ -170,4 +170,4 @@ Attention de mettre à jour les liens "plugins/widget/core/template/dashboard/cm
 
 ![Widget](images/WidgetCode.png)
 
-Il ne reste plus qu'a profiter de la piscine !
+Il ne reste plus qu'à profiter de la piscine !
