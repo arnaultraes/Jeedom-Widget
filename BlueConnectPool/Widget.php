@@ -3,7 +3,7 @@
 <div class="poolwidget" data-type="info" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#">
 	<div class="poolShadow">
 		<div class="poolTemperature">
-          <div class="poolTemperatureHeader"><span>Température des 2 dernières semaines</span></div>
+			<div class="poolTemperatureHeader"><span>Température des 2 dernières semaines</span></div>
 			<div class="poolTemperatureGraph">
 				<div class="poolTemperatureDisplay"><span class="poolActualTemperature"></span><span class="poolTemperatureSubDisplay"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMzYwIDQ4MEgyNGMtMTMuMyAwLTI0LTEwLjctMjQtMjR2LTI0YzAtMTMuMyAxMC43LTI0IDI0LTI0aDMzNmMxMy4zIDAgMjQgMTAuNyAyNCAyNHYyNGMwIDEzLjMtMTAuNyAyNC0yNCAyNHpNMTI4IDU2djEzNkg0MC4zYy0xNy44IDAtMjYuNyAyMS41LTE0LjEgMzQuMWwxNTIuMiAxNTIuMmM3LjUgNy41IDE5LjggNy41IDI3LjMgMGwxNTIuMi0xNTIuMmMxMi42LTEyLjYgMy43LTM0LjEtMTQuMS0zNC4xSDI1NlY1NmMwLTEzLjMtMTAuNy0yNC0yNC0yNGgtODBjLTEzLjMgMC0yNCAxMC43LTI0IDI0eiIvPjwvc3ZnPg==" width="10" height="10"> : <span class="poolMinTemperature2Weeks"></span> &nbsp;-&nbsp; <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMjQgMzJoMzM2YzEzLjMgMCAyNCAxMC43IDI0IDI0djI0YzAgMTMuMy0xMC43IDI0LTI0IDI0SDI0QzEwLjcgMTA0IDAgOTMuMyAwIDgwVjU2YzAtMTMuMyAxMC43LTI0IDI0LTI0em0yMzIgNDI0VjMyMGg4Ny43YzE3LjggMCAyNi43LTIxLjUgMTQuMS0zNC4xTDIwNS43IDEzMy43Yy03LjUtNy41LTE5LjgtNy41LTI3LjMgMEwyNi4xIDI4NS45QzEzLjUgMjk4LjUgMjIuNSAzMjAgNDAuMyAzMjBIMTI4djEzNmMwIDEzLjMgMTAuNyAyNCAyNCAyNGg4MGMxMy4zIDAgMjQtMTAuNyAyNC0yNHoiLz48L3N2Zz4=" width="10" height="10"> : <span class="poolMaxTemperature2Weeks"></span><br>PAC : <span class="poolActualPAC"></span></span></div>
 				<div class="poolTemperatureCanvas"><canvas id="poolTempChart" width="400" height="150"></canvas></div>
@@ -91,7 +91,7 @@
 
 			switch(entries[0].trim()) {
 				case 'Temperature':
-                	actualTemp = entries[1].trim();
+					actualTemp = entries[1].trim();
 					$('.poolwidget[data-cmd_uid=#uid#] .poolActualTemperature').empty().append(entries[1].trim() + "°C");
 					break;
 	            
@@ -106,7 +106,7 @@
 					break;
 	            
 				case 'SortiePAC':
-                	var gainPAC = entries[1].trim() - actualTemp;
+					var gainPAC = entries[1].trim() - actualTemp;
 					$('.poolwidget[data-cmd_uid=#uid#] .poolActualPAC').empty().append((gainPAC >=0 ? "+" : "-") + Number.parseFloat(gainPAC).toFixed(1) + "°C");
 					break;
 	            
