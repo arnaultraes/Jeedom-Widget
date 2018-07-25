@@ -3,13 +3,13 @@ Widget BlueConnectPool
 
 Voici un aperçu du résultat final :
 
-![Apercu](images/Widget.png)
+![Aperçu](images/Widget.png)
 
-La mise en place de ce widget nécessite de récupérer dans un premier temps les informations du Blue Connect via IFTTT. Une fois les informations récupérer dans Jeedom, un premier script les analyseras et calculeras certaines informations. Puis un Virtuel sera créer afin d'obtenir ce resultat.
+La mise en place de ce widget nécessite de récupérer dans un premier temps les informations du Blue Connect via IFTTT. Une fois les informations récupérer dans Jeedom, un premier script les analysera et calculeras certaines informations. Puis un virtuel sera créé afin d'obtenir ce résultat.
 
 ## Mise en place d'IFTTT
 
-L’idée est de récupérer d'un seul coup les différentes valeurs du Blue Connect et les stocker sous forme d'une chaine de caractères dans une info d'un virtuel puis d'executer un scénario pour splitter les infos et en calculer d'autres.
+L’idée est de récupérer d'un seul coup les différentes valeurs du Blue Connect et les stocker sous forme d'une chaine de caractères dans une info d'un virtuel puis d'exécuter un scénario pour splitter les infos et en calculer d'autres.
 
 Création du virtuel :
 
@@ -28,7 +28,7 @@ Il reste maintenant à créer un scenario dans Jeedom qui sera déclenché lors 
 
 ![Scénario Général](images/ScenarioGeneral.png)
 
-Chez moi, le Blue Connect est dans le local piscine. La filtration fonctionnant de 7h à 21h, je ne souhaite pas prendre en compte les mesures qui remontent lorsque celle-ci est etteinte car elles sont éronnées.
+Chez moi, le Blue Connect est dans le local piscine. La filtration fonctionnant de 7h à 21h, je ne souhaite pas prendre en compte les mesures qui remontent lorsque celle-ci est éteinte car elles sont erronées.
 
 ![Scénario Code](images/ScenarioCode.png)
 
@@ -147,7 +147,26 @@ cmd::byString("#[Piscine][Blue Connect Data][ConductivitéStateDuration]#")->eve
 
 ## Mise en place du virtuel et du widget
 
-Les données étant stockées dans notre virtuel "Blue Connect Data", il faut créer un nouveau virtuel sur lequel on appliquera notre Widget. Ce virtuel contient une seule entrée qui sera la concaténation de toutes les infos nécessaire pour notre widget :
+Les données étant stockées dans notre virtuel "Blue Connect Data", il faut créer un nouveau virtuel sur lequel on appliquera notre Widget. Ce virtuel contient une seule entrée qui sera la concaténation de toutes les infos nécessaires pour notre widget :
 
 ![Virtuel Affichage](images/VirtuelAffichage.png)
 
+Pour simplifier la saisie voici le texte à insérer dans le virtuel à adapter en fonction de votre configuration :
+* [Piscine][Blue Connect Data] est le virtuel précédemment créer qui contient toutes les informations
+* [Piscine][Raspberry][Température PAC] correspond à la sonde de température en sortie de la PAC qui me permet de calculer le gain de la PAC
+
+> Temperature : #[Piscine][Blue Connect Data][Température]# ¤ HistTemperature : maxBetween(#[Piscine][Blue Connect Data][Température]#,13 days ago 00:00:00, 13 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,12 days ago 00:00:00, 12 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,11 days ago 00:00:00, 11 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,10 days ago 00:00:00, 10 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,9 days ago 00:00:00, 9 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,8 days ago 00:00:00, 8 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,7 days ago 00:00:00, 7 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,6 days ago 00:00:00, 6 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,5 days ago 00:00:00, 5 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,4 days ago 00:00:00, 4 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,3 days ago 00:00:00, 3 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,2 days ago 00:00:00, 2 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,1 days ago 00:00:00, 1 days ago 23:59:59);maxBetween(#[Piscine][Blue Connect Data][Température]#,today 00:00:00,today 23:59:59) ¤ SortiePAC : #[Piscine][Raspberry][Température PAC]# ¤ pH : #[Piscine][Blue Connect Data][pH]#;#[Piscine][Blue Connect Data][pHStateDuration]# ¤ Redox : #[Piscine][Blue Connect Data][Redox]#;#[Piscine][Blue Connect Data][RedoxStateDuration]# ¤ Salinité : #[Piscine][Blue Connect Data][Salinité]#;#[Piscine][Blue Connect Data][SalinitéStateDuration]#
+
+Une ne reste plus qu'a créer votre widget "BlueConnectPool" :
+* Version : Dashbord
+* Type : Info
+* Sous-type : Autre
+* Ajouter les fichiers :
+	* [Chart.min.js](Chart.min.js) : Bibliothèque permettant l'affichage de la courbe de température
+	* [Pool.css](Pool.css) : Le fichier CSS de notre Widget
+* Copier le code PHP [du widget](Widget.php). 
+Attention de mettre à jour les liens "plugins/widget/core/template/dashboard/cmd.info.string.BlueConnectPool" si vous ne nommé pas le widget de la même manière.
+
+![Widget](images/WidgetCode.png)
+
+Il ne reste plus qu'a profiter de la piscine !
